@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  </head>
+
+<body>
+  <header>
+        <img class="" src="./assets/logo.png" alt="" srcset="">
+        <div class="text-center">
+          <h1 class="me-2 " style="color: white;" >RANKING PTC</h1>
+          <small style="color: white; font-size: 0.55em;">by @bruno_beise </small>
+        </div>
+        
+        
+        <button style="color: white;" type="button" class="btn"  data-bs-toggle="modal" data-bs-target="#modaladm">
+          Admin
+        </button>
+  </header>
+
+  <div class="modal fade" id="AdicionarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Desafiar Jogador</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="container mb-3 mt-3">
+            <div class="row p-3 text-center">
+              <h2 id="titulo" class="mb-3">Simular Jogo</h2>
+              <div class="col-5">
+                <h3 style="color: green;">Ganhador</h3>
+                <select id="select1" onchange="infosganhador()" class="form-select" aria-label="select">
+                </select>
+                <p id="rateinfo1"></p>
+              </div>
+              <div class="col text-center">
+                <h1 class="mt-4">X</h1>
+              </div>
+              <div class="col-5">
+                <h3 style="color: red;">Perdedor</h3>
+                <select onchange="infosganhador()" id="select2" class="form-select" aria-label="select">
+                  
+                </select>
+                <p id="rateinfo2"></p>
+              </div>
+              <div class="row text-center">
+                <div class="col text-center">
+                  <button onclick="adicionarjogo()" class="btn btn-primary ms-4">Adicionar</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="HistoricoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Histórico de Jogos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="containertexto" class="col">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="DesafiarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Desafiar Jogador</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="container mb-3 mt-3">
+          <div class="row p-3 text-center">
+            <h2 id="titulo" class="mb-3 d-none">Simular Jogo</h2>
+            <div class="col-5">
+              <h3>Desafiador</h3>
+              <select id="selectDesafiador" onchange="infosdesafio()" class="form-select" aria-label="select">
+              </select>
+              <p id="rateinfoDesafiador"></p>
+            </div>
+            <div class="col-2 text-center">
+              <h3 class="mt-4">⚔</h3>
+            </div>
+            <div class="col-5">
+              <h3>Desafiado</h3>
+              <select id="selectDesafiado" onchange="infosdesafio()" class="form-control" aria-label="select">
+                
+              </select>
+              <p id="rateinfoDesafiado"></p>
+            </div>
+            <div class="row text-center">
+              <div class="col text-center">
+                <button onclick="desafio()" class="btn btn-primary ms-4">Desafiar</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="modaladm" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login ADM</h1>
+      </div>
+      <div class="modal-body container">
+        <div class="row">
+        
+          <div class="col-8 offset-2"> <input id="formadmlogin" placeholder="Login" class="form-control" type="text"></div>
+          <div class="col-8 offset-2 mt-3"> <input id="formadmsenha" placeholder="Senha" class="form-control" type="text"></div>
+      </div>
+    </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button onclick="adm()" data-bs-dismiss="modal" class="btn btn-primary">Entrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <div class="container mt-3 text-center">
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#DesafiarModal">Desafiar ⚔</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HistoricoModal">Histórico 📋</button>
+          <button class="btn btn-primary d-none" id="addjogo" data-bs-toggle="modal" data-bs-target="#AdicionarModal">Adicionar ⚙</button>
+        </div>
+      </div>
+    </div>
+
+   <div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Jogos</th>
+                    <th scope="col">Disponível</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+   </div>
+
+
+   <script src="./index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
